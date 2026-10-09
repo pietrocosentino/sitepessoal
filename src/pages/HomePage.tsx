@@ -9,18 +9,15 @@ import type { PageProps } from "../types/portfolio";
 export function HomePage({ onNavigate }: PageProps) {
   const {
     t,
-    content: { profile, projects, experiences, competencies },
+    content: { projects, experiences, competencies },
   } = useLocale();
   return (
     <div className="professional-home">
       <section className="intro-section">
         <div className="editorial-container intro-grid">
           <div>
-            <p className="eyebrow">
-              {profile.name} · {profile.location}
-            </p>
-            <h1>{profile.headline}</h1>
-            <p className="intro-copy">{profile.summary}</p>
+            <h1>{t.heroTitle}</h1>
+            <p className="intro-copy">{t.heroCopy}</p>
             <div className="intro-actions">
               <SiteLink
                 className="primary-link"
@@ -41,9 +38,9 @@ export function HomePage({ onNavigate }: PageProps) {
             </div>
           </div>
           <aside className="intro-note">
-            <span className="note-label">{t.introNote}</span>
-            <strong>{t.clarity}</strong>
-            <p>{t.introNoteCopy}</p>
+            <span className="note-label">{t.heroEvidenceLabel}</span>
+            <strong>{t.heroEvidenceTitle}</strong>
+            <p>{t.heroEvidenceCopy}</p>
             <div className="note-rule" />
             <span className="note-label">{t.contexts}</span>
             <p>{t.contextsCopy}</p>

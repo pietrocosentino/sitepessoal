@@ -2,7 +2,7 @@
 
 ## Comportamento entregue
 
-- Cargo e resumo profissional na primeira tela, com acesso a projetos e currículo.
+- Abertura orientada ao valor do trabalho, sem repetir nome, localização e cargo do cabeçalho; experiência de nove anos apresentada como apoio.
 - Cabeçalho com Projetos, Trajetória, Contato, seletor de idioma e o único download de currículo. Insights fica no rodapé.
 - Três casos detalhados, com responsabilidade individual e exemplos ilustrativos identificados.
 - Histórico de seis empresas, cargos e períodos; formação separada de competências e certificações.

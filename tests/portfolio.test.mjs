@@ -105,7 +105,11 @@ test("navigation updates content, document title, focus and history; project lin
     await act(async () => {
       root.render(createElement(App));
     });
-    assert(document.querySelector("h1").textContent.includes("Sênior"));
+    assert(
+      document
+        .querySelector("h1")
+        .textContent.includes("necessidades de negócio"),
+    );
     const click = async (selector) => {
       await act(async () => {
         document.querySelector(selector).dispatchEvent(

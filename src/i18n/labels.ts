@@ -21,12 +21,16 @@ export const ptLabels = {
   notFoundCopy:
     "O endereço não corresponde a uma página ou projeto do portfólio.",
   backHome: "Voltar ao início",
+  heroTitle:
+    "Transformo necessidades de negócio em requisitos claros para desenvolvimento.",
+  heroCopy:
+    "Conduzo o entendimento do problema, defino regras e critérios de aceite e acompanho a validação das entregas com negócio e tecnologia.",
+  heroEvidenceLabel: "Experiência profissional",
+  heroEvidenceTitle: "9 anos entre negócio e tecnologia",
+  heroEvidenceCopy:
+    "Atuação em requisitos, análise funcional e produto, com experiência em sistemas SaaS e integrações.",
   viewProjects: "Ver projetos",
   viewCareer: "Conhecer a trajetória",
-  introNote: "Da definição à homologação",
-  clarity: "Clareza para entregar.",
-  introNoteCopy:
-    "Requisitos, regras de negócio e critérios de aceite para conectar stakeholders e times técnicos.",
   contexts: "Experiência em diferentes contextos",
   contextsCopy:
     "Educação, pagamentos, sistemas corporativos e produtos digitais.",
@@ -108,12 +112,15 @@ const en: Labels = {
   notFoundCopy:
     "This address does not match a page or project in the portfolio.",
   backHome: "Back to home",
+  heroTitle: "I turn business needs into clear requirements for development.",
+  heroCopy:
+    "I clarify the problem, define business rules and acceptance criteria, and work with business and technology teams to validate deliveries.",
+  heroEvidenceLabel: "Professional experience",
+  heroEvidenceTitle: "9 years across business and technology",
+  heroEvidenceCopy:
+    "Experience in requirements, functional analysis and product, including SaaS systems and integrations.",
   viewProjects: "View projects",
   viewCareer: "Explore my career",
-  introNote: "From discovery to acceptance testing",
-  clarity: "Clarity for delivery.",
-  introNoteCopy:
-    "Requirements, business rules and acceptance criteria to connect stakeholders and technical teams.",
   contexts: "Experience across different domains",
   contextsCopy: "Education, payments, enterprise systems and digital products.",
   appliedExperience: "Applied experience",
@@ -194,12 +201,16 @@ const es: Labels = {
   notFoundCopy:
     "La dirección no corresponde a una página o proyecto del portafolio.",
   backHome: "Volver al inicio",
+  heroTitle:
+    "Transformo necesidades de negocio en requisitos claros para el desarrollo.",
+  heroCopy:
+    "Analizo el problema, defino reglas y criterios de aceptación y acompaño la validación de las entregas con negocio y tecnología.",
+  heroEvidenceLabel: "Experiencia profesional",
+  heroEvidenceTitle: "9 años entre negocio y tecnología",
+  heroEvidenceCopy:
+    "Experiencia en requisitos, análisis funcional y producto, incluidos sistemas SaaS e integraciones.",
   viewProjects: "Ver proyectos",
   viewCareer: "Conocer la trayectoria",
-  introNote: "Del análisis a las pruebas de aceptación",
-  clarity: "Claridad para entregar.",
-  introNoteCopy:
-    "Requisitos, reglas de negocio y criterios de aceptación para conectar a las partes interesadas con los equipos técnicos.",
   contexts: "Experiencia en distintos ámbitos",
   contextsCopy:
     "Educación, pagos, sistemas corporativos y productos digitales.",
