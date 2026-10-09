@@ -1,27 +1,27 @@
 import { ArrowUpRight } from "lucide-react";
-import { profile } from "../../data/profile";
+import { useLocale } from "../../i18n/LocaleContext";
 export function ContactLinks() {
+  const {
+    t,
+    content: { profile },
+  } = useLocale();
   return (
-    <div className="contact-actions">
-      <a className="primary-link" href={`mailto:${profile.email}`}>
-        Enviar um e-mail <ArrowUpRight size={17} aria-hidden="true" />
+    <address className="contact-channel-list">
+      <a href={`mailto:${profile.email}`}>
+        <span>{t.email}</span>
+        {profile.email}
+        <ArrowUpRight size={17} aria-hidden="true" />
       </a>
-      <a
-        className="text-link"
-        href={profile.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LinkedIn <ArrowUpRight size={17} aria-hidden="true" />
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+        <span>{t.linkedin}</span>
+        {profile.name}
+        <ArrowUpRight size={17} aria-hidden="true" />
       </a>
-      <a
-        className="text-link"
-        href={profile.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        WhatsApp <ArrowUpRight size={17} aria-hidden="true" />
+      <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
+        <span>{t.whatsapp}</span>
+        {profile.phone}
+        <ArrowUpRight size={17} aria-hidden="true" />
       </a>
-    </div>
+    </address>
   );
 }

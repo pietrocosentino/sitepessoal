@@ -111,6 +111,3 @@ export const projects: readonly Project[] = [
     },
   },
 ];
-export function findProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
-}

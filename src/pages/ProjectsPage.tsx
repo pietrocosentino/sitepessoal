@@ -1,20 +1,17 @@
-import { projects } from "../data/projects";
+import { useLocale } from "../i18n/LocaleContext";
 import { PageIntro } from "../components/portfolio/PageIntro";
 import { ProjectCard } from "../components/portfolio/ProjectCard";
 import type { PageProps } from "../types/portfolio";
 export function ProjectsPage({ onNavigate }: PageProps) {
+  const {
+    t,
+    content: { projects },
+  } = useLocale();
   return (
     <div className="professional-home portfolio-page">
       <div className="editorial-container">
-        <PageIntro
-          eyebrow="Experiência aplicada"
-          title="Projetos e contextos de atuação"
-        >
-          <p>
-            Casos organizados por contexto, responsabilidade e entregáveis.
-            Informações de clientes, dados internos e documentos confidenciais
-            não são divulgados.
-          </p>
+        <PageIntro eyebrow={t.appliedExperience} title={t.projectsTitle}>
+          <p>{t.projectsCopy}</p>
         </PageIntro>
         <div className="project-grid">
           {projects.map((project) => (

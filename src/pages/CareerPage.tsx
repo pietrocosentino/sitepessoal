@@ -1,30 +1,27 @@
-import {
-  profile,
-  experiences,
-  education,
-  credentials,
-  competencies,
-} from "../data/profile";
+import { useLocale } from "../i18n/LocaleContext";
 import { PageIntro } from "../components/portfolio/PageIntro";
-import { ResumeLink } from "../components/portfolio/ResumeLink";
 import { ExperienceList } from "../components/portfolio/ExperienceList";
 import { SectionHeading } from "../components/portfolio/SectionHeading";
 import { ContactSection } from "../components/portfolio/ContactSection";
-export function CareerPage() {
+import type { PageProps } from "../types/portfolio";
+export function CareerPage({ onNavigate }: PageProps) {
+  const {
+    t,
+    content: { profile, experiences, education, credentials, competencies },
+  } = useLocale();
   return (
     <div className="professional-home">
       <div className="portfolio-page editorial-container">
-        <PageIntro eyebrow="Perfil profissional" title="Trajetória e formação">
+        <PageIntro eyebrow={t.profile} title={t.careerTitle}>
           <p>{profile.summary}</p>
         </PageIntro>
-        <ResumeLink />
         <section
           className="career-section"
           aria-labelledby="experience-heading"
         >
           <SectionHeading
             id="experience-heading"
-            title="Experiência profissional"
+            title={t.professionalExperience}
           />
           <ExperienceList items={experiences} />
         </section>
@@ -32,10 +29,7 @@ export function CareerPage() {
           className="career-section"
           aria-labelledby="competencies-heading"
         >
-          <SectionHeading
-            id="competencies-heading"
-            title="Competências aplicadas"
-          />
+          <SectionHeading id="competencies-heading" title={t.appliedSkills} />
           <dl className="competency-grid">
             {competencies.map((item) => (
               <div key={item.title}>
@@ -46,7 +40,7 @@ export function CareerPage() {
           </dl>
         </section>
         <section className="career-section" aria-labelledby="education-heading">
-          <SectionHeading id="education-heading" title="Formação acadêmica" />
+          <SectionHeading id="education-heading" title={t.education} />
           <ul className="education-list">
             {education.map((item) => (
               <li key={item.title}>
@@ -62,10 +56,7 @@ export function CareerPage() {
           className="career-section"
           aria-labelledby="credentials-heading"
         >
-          <SectionHeading
-            id="credentials-heading"
-            title="Certificação e formação complementar"
-          />
+          <SectionHeading id="credentials-heading" title={t.credentials} />
           <ul className="education-list">
             {credentials.map((item) => (
               <li key={item.title}>
@@ -75,8 +66,12 @@ export function CareerPage() {
             ))}
           </ul>
         </section>
+        <section className="career-section" aria-labelledby="languages-heading">
+          <SectionHeading id="languages-heading" title={t.languages} />
+          <p className="section-copy">{t.englishLevel}</p>
+        </section>
       </div>
-      <ContactSection />
+      <ContactSection onNavigate={onNavigate} />
     </div>
   );
 }

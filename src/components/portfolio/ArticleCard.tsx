@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import type { InsightArticle } from "../../data/insights";
+import { useLocale } from "../../i18n/LocaleContext";
 export function ArticleCard({
   article,
   expanded,
@@ -9,6 +10,7 @@ export function ArticleCard({
   expanded: boolean;
   onToggle: () => void;
 }) {
+  const { t } = useLocale();
   const contentId = `article-${article.id}`;
   return (
     <article className="insight-card">
@@ -24,7 +26,7 @@ export function ArticleCard({
         aria-expanded={expanded}
         aria-controls={contentId}
       >
-        {expanded ? "Recolher artigo" : "Ler artigo completo"}
+        {expanded ? t.collapseArticle : t.readArticle}
         <ChevronDown size={16} aria-hidden="true" />
       </button>
       <div id={contentId} hidden={!expanded} className="article-content">

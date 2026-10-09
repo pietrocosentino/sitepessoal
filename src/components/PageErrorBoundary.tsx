@@ -1,6 +1,7 @@
 import { Component, type ReactNode } from "react";
+import type { Labels } from "../i18n/types";
 export class PageErrorBoundary extends Component<
-  { children: ReactNode },
+  { children: ReactNode; labels: Labels },
   { failed: boolean }
 > {
   state = { failed: false };
@@ -8,17 +9,18 @@ export class PageErrorBoundary extends Component<
     return { failed: true };
   }
   render() {
+    const t = this.props.labels;
     if (this.state.failed)
       return (
         <section className="editorial-container portfolio-page" role="alert">
-          <h1>Não foi possível carregar esta página</h1>
-          <p className="section-copy">Confira sua conexão e tente novamente.</p>
+          <h1>{t.errorTitle}</h1>
+          <p className="section-copy">{t.errorCopy}</p>
           <button
             className="primary-link"
             type="button"
             onClick={() => window.location.reload()}
           >
-            Tentar novamente
+            {t.retry}
           </button>
         </section>
       );

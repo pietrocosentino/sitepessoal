@@ -1,15 +1,16 @@
 import { ArrowRight } from "lucide-react";
-import { profile, experiences, competencies } from "../data/profile";
-import { projects } from "../data/projects";
+import { useLocale } from "../i18n/LocaleContext";
 import { SiteLink } from "../components/SiteLink";
-import { ResumeLink } from "../components/portfolio/ResumeLink";
 import { ProjectCard } from "../components/portfolio/ProjectCard";
 import { ExperienceList } from "../components/portfolio/ExperienceList";
 import { SectionHeading } from "../components/portfolio/SectionHeading";
 import { ContactSection } from "../components/portfolio/ContactSection";
 import type { PageProps } from "../types/portfolio";
-
 export function HomePage({ onNavigate }: PageProps) {
+  const {
+    t,
+    content: { profile, projects, experiences, competencies },
+  } = useLocale();
   return (
     <div className="professional-home">
       <section className="intro-section">
@@ -26,37 +27,26 @@ export function HomePage({ onNavigate }: PageProps) {
                 href="/projetos"
                 onNavigate={onNavigate}
               >
-                Ver projetos <ArrowRight size={17} aria-hidden="true" />
+                {t.viewProjects}
+                <ArrowRight size={17} aria-hidden="true" />
               </SiteLink>
-              <ResumeLink className="secondary-link" />
+              <SiteLink
+                className="text-link"
+                href="/trajetoria"
+                onNavigate={onNavigate}
+              >
+                {t.viewCareer}
+                <ArrowRight size={17} aria-hidden="true" />
+              </SiteLink>
             </div>
-            <a
-              className="profile-social"
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Perfil no LinkedIn ↗
-            </a>
           </div>
           <aside className="intro-note">
-            <span className="note-label">Da definição à homologação</span>
-            <strong>
-              Clareza
-              <br />
-              para entregar.
-            </strong>
-            <p>
-              Requisitos, regras de negócio e critérios de aceite para conectar
-              stakeholders e times técnicos.
-            </p>
+            <span className="note-label">{t.introNote}</span>
+            <strong>{t.clarity}</strong>
+            <p>{t.introNoteCopy}</p>
             <div className="note-rule" />
-            <span className="note-label">
-              Experiência em diferentes contextos
-            </span>
-            <p>
-              Educação, pagamentos, sistemas corporativos e produtos digitais.
-            </p>
+            <span className="note-label">{t.contexts}</span>
+            <p>{t.contextsCopy}</p>
           </aside>
         </div>
       </section>
@@ -64,15 +54,16 @@ export function HomePage({ onNavigate }: PageProps) {
         <div className="editorial-container">
           <SectionHeading
             id="selected-projects"
-            eyebrow="Experiência aplicada"
-            title="Projetos selecionados"
+            eyebrow={t.appliedExperience}
+            title={t.selectedProjects}
             action={
               <SiteLink
                 className="text-link"
                 href="/projetos"
                 onNavigate={onNavigate}
               >
-                Ver todos os casos <ArrowRight size={17} aria-hidden="true" />
+                {t.viewCases}
+                <ArrowRight size={17} aria-hidden="true" />
               </SiteLink>
             }
           />
@@ -92,20 +83,16 @@ export function HomePage({ onNavigate }: PageProps) {
           <div>
             <SectionHeading
               id="career-preview"
-              eyebrow="Trajetória"
-              title="Experiência entre negócio, produto e sistemas"
+              eyebrow={t.career}
+              title={t.careerPreview}
             />
-            <p className="section-copy">
-              Atuação como analista de requisitos, analista funcional e Product
-              Owner, com foco na definição de escopo, documentação e validação
-              das entregas.
-            </p>
+            <p className="section-copy">{t.careerCopy}</p>
             <SiteLink
               className="text-link"
               href="/trajetoria"
               onNavigate={onNavigate}
             >
-              Ver trajetória completa{" "}
+              {t.fullCareer}
               <ArrowRight size={17} aria-hidden="true" />
             </SiteLink>
           </div>
@@ -116,8 +103,8 @@ export function HomePage({ onNavigate }: PageProps) {
         <div className="editorial-container">
           <SectionHeading
             id="skills-heading"
-            eyebrow="Competências aplicadas"
-            title="Ferramentas a serviço da análise"
+            eyebrow={t.appliedSkills}
+            title={t.toolsTitle}
           />
           <dl className="competency-grid">
             {competencies.slice(0, 4).map((item) => (
@@ -129,7 +116,7 @@ export function HomePage({ onNavigate }: PageProps) {
           </dl>
         </div>
       </section>
-      <ContactSection />
+      <ContactSection onNavigate={onNavigate} />
     </div>
   );
 }

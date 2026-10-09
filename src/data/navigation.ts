@@ -1,6 +1,5 @@
 export const navigation = [
-  { path: "/projetos", label: "Projetos" },
-  { path: "/trajetoria", label: "Trajetória" },
-  { path: "/insights", label: "Insights" },
-  { path: "/contato", label: "Contato" },
+  { path: "/projetos", key: "projects" },
+  { path: "/trajetoria", key: "career" },
+  { path: "/contato", key: "contact" },
 ] as const;

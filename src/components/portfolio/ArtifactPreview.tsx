@@ -1,13 +1,12 @@
 import type { ProjectArtifact } from "../../types/portfolio";
+import { useLocale } from "../../i18n/LocaleContext";
 export function ArtifactPreview({ artifact }: { artifact: ProjectArtifact }) {
+  const { t } = useLocale();
   return (
     <figure className="artifact-preview">
       <figcaption>
         <h3>{artifact.title}</h3>
-        <p>
-          Exemplo ilustrativo reconstruído para o portfólio. Não é um documento
-          de cliente nem evidência de resultado.
-        </p>
+        <p>{t.artifactNote}</p>
       </figcaption>
       <ol
         className={

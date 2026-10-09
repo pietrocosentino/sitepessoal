@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { findProject } from "../data/projects";
+import { useLocale } from "../i18n/LocaleContext";
 import { SiteLink } from "../components/SiteLink";
 import { PageIntro } from "../components/portfolio/PageIntro";
 import { ArtifactPreview } from "../components/portfolio/ArtifactPreview";
@@ -10,7 +10,11 @@ export function ProjectDetailPage({
   onNavigate,
   slug,
 }: PageProps & { slug: string }) {
-  const project = findProject(slug);
+  const {
+    t,
+    content: { projects },
+  } = useLocale();
+  const project = projects.find((item) => item.slug === slug);
   if (!project) return <NotFoundPage onNavigate={onNavigate} />;
   return (
     <div className="professional-home">
@@ -22,33 +26,33 @@ export function ProjectDetailPage({
             onNavigate={onNavigate}
           >
             <ArrowLeft size={16} aria-hidden="true" />
-            Todos os projetos
+            {t.allProjects}
           </SiteLink>
           <PageIntro eyebrow={project.sector} title={project.title}>
             <p>{project.summary}</p>
           </PageIntro>
           <dl className="project-facts">
             <div>
-              <dt>Empresa</dt>
+              <dt>{t.company}</dt>
               <dd>{project.company}</dd>
             </div>
             <div>
-              <dt>Papel</dt>
+              <dt>{t.role}</dt>
               <dd>{project.role}</dd>
             </div>
             <div>
-              <dt>Período da experiência</dt>
+              <dt>{t.period}</dt>
               <dd>{project.period}</dd>
             </div>
           </dl>
           <div className="case-layout">
             <div className="case-content">
               <section>
-                <h2>Contexto e desafio</h2>
+                <h2>{t.challenge}</h2>
                 <p>{project.context}</p>
               </section>
               <section>
-                <h2>Minha atuação</h2>
+                <h2>{t.responsibilities}</h2>
                 <ul>
                   {project.responsibilities.map((item) => (
                     <li key={item}>{item}</li>
@@ -56,7 +60,7 @@ export function ProjectDetailPage({
                 </ul>
               </section>
               <section>
-                <h2>Entregáveis funcionais</h2>
+                <h2>{t.deliverables}</h2>
                 <ul>
                   {project.deliverables.map((item) => (
                     <li key={item}>{item}</li>
@@ -64,21 +68,18 @@ export function ProjectDetailPage({
                 </ul>
               </section>
               <section>
-                <h2>Validação e limites do caso</h2>
+                <h2>{t.validation}</h2>
                 <p>{project.validation}</p>
               </section>
             </div>
             <aside className="case-aside">
-              <h2>Competências aplicadas</h2>
+              <h2>{t.appliedSkills}</h2>
               <ul className="skill-list">
                 {project.skills.map((skill) => (
                   <li key={skill}>{skill}</li>
                 ))}
               </ul>
-              <p>
-                Descrição da atuação profissional. Exemplos didáticos são
-                apresentados separadamente dos entregáveis originais.
-              </p>
+              <p>{t.evidenceNote}</p>
             </aside>
           </div>
           <ArtifactPreview artifact={project.artifact} />
@@ -87,11 +88,11 @@ export function ProjectDetailPage({
             href="/trajetoria"
             onNavigate={onNavigate}
           >
-            Conhecer a trajetória profissional →
+            {t.projectCareer} →
           </SiteLink>
         </div>
       </article>
-      <ContactSection />
+      <ContactSection onNavigate={onNavigate} />
     </div>
   );
 }

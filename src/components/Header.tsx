@@ -1,20 +1,29 @@
 import { useEffect, useRef } from "react";
 import { SiteLink } from "./SiteLink";
 import { navigation } from "../data/navigation";
-import { profile } from "../data/profile";
+import { useLocale } from "../i18n/LocaleContext";
+import { LanguageSelector } from "./LanguageSelector";
 import { ResumeLink } from "./portfolio/ResumeLink";
 import type { Navigate } from "../types/portfolio";
+import type { Locale } from "../i18n/types";
 export function Header({
   currentPath,
   onNavigate,
+  onLocaleChange,
 }: {
   currentPath: string;
   onNavigate: Navigate;
+  onLocaleChange: (locale: Locale) => void;
 }) {
+  const {
+    locale,
+    t,
+    content: { profile },
+  } = useLocale();
   const menuRef = useRef<HTMLDetailsElement>(null);
   useEffect(() => {
     menuRef.current?.removeAttribute("open");
-  }, [currentPath]);
+  }, [currentPath, locale]);
   useEffect(() => {
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape" && menuRef.current?.open) {
@@ -38,7 +47,7 @@ export function Header({
           : undefined
       }
     >
-      {section.label}
+      {t[section.key]}
     </SiteLink>
   ));
   return (
@@ -48,22 +57,23 @@ export function Header({
           href="/"
           onNavigate={onNavigate}
           className="site-brand"
-          aria-label={`${profile.name} — início`}
+          aria-label={`${profile.name} — ${t.home}`}
         >
           <span>
             {profile.name}
             <span className="brand-dot">.</span>
           </span>
-          <small>Requisitos · Análise funcional · Produto</small>
+          <small>{t.brandLine}</small>
         </SiteLink>
-        <nav className="desktop-nav" aria-label="Navegação principal">
+        <nav className="desktop-nav" aria-label={t.mainNav}>
           {links}
         </nav>
         <div className="header-actions">
+          <LanguageSelector onChange={onLocaleChange} />
           <ResumeLink className="header-resume" />
           <details ref={menuRef} className="mobile-menu">
-            <summary>Menu</summary>
-            <nav aria-label="Navegação móvel">{links}</nav>
+            <summary>{t.menu}</summary>
+            <nav aria-label={t.mobileNav}>{links}</nav>
           </details>
         </div>
       </div>

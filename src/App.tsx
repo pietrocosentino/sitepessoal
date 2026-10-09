@@ -6,20 +6,33 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { useNavigation } from "./hooks/useNavigation";
 import { routePages, routeTitle, ProjectDetail } from "./routing/pages";
 import { projectSlug } from "./routing/routes";
-import { profile } from "./data/profile";
-export default function App() {
-  const { currentPath, navigate } = useNavigation();
+import { LocaleProvider, useLocale } from "./i18n/LocaleContext";
+import { updateMetadata } from "./i18n/metadata";
+import type { Locale } from "./i18n/types";
+import type { Navigate } from "./types/portfolio";
+function Portfolio({
+  currentPath,
+  navigate,
+  changeLocale,
+}: {
+  currentPath: string;
+  navigate: Navigate;
+  changeLocale: (locale: Locale) => void;
+}) {
+  const { locale, t, content } = useLocale();
   const mainRef = useRef<HTMLElement>(null);
   const initialPath = useRef(true);
   const Page = routePages[currentPath as keyof typeof routePages]?.component;
   const slug = projectSlug(currentPath);
   useEffect(() => {
-    document.title = `${routeTitle(currentPath)} | ${profile.name}`;
-    const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute(
-      "content",
-      `${profile.headline}. ${profile.summary}`,
-    );
+    updateMetadata({
+      locale,
+      path: currentPath,
+      title: `${routeTitle(currentPath, t, content)} | ${content.profile.name}`,
+      description: content.profile.summary,
+    });
+  }, [currentPath, locale, t, content]);
+  useEffect(() => {
     if (initialPath.current) {
       initialPath.current = false;
       return;
@@ -30,20 +43,24 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
       <a href="#conteudo" className="skip-link">
-        Pular para o conteúdo
+        {t.skip}
       </a>
-      <Header currentPath={currentPath} onNavigate={navigate} />
+      <Header
+        currentPath={currentPath}
+        onNavigate={navigate}
+        onLocaleChange={changeLocale}
+      />
       <main
         id="conteudo"
         ref={mainRef}
         tabIndex={-1}
         className="flex-1 min-w-0 outline-none"
       >
-        <PageErrorBoundary key={currentPath}>
+        <PageErrorBoundary key={currentPath} labels={t}>
           <Suspense
             fallback={
               <div role="status" className="portfolio-page editorial-container">
-                Carregando página…
+                {t.loading}
               </div>
             }
           >
@@ -59,5 +76,13 @@ export default function App() {
       </main>
       <Footer onNavigate={navigate} />
     </div>
+  );
+}
+export default function App() {
+  const navigation = useNavigation();
+  return (
+    <LocaleProvider locale={navigation.locale}>
+      <Portfolio {...navigation} />
+    </LocaleProvider>
   );
 }

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { SiteLink } from "../SiteLink";
+import { useLocale } from "../../i18n/LocaleContext";
 import type { Navigate, Project } from "../../types/portfolio";
 export function ProjectCard({
   project,
@@ -8,6 +9,7 @@ export function ProjectCard({
   project: Project;
   onNavigate: Navigate;
 }) {
+  const { t } = useLocale();
   return (
     <article className="project-card">
       <p className="eyebrow">{project.sector}</p>
@@ -20,7 +22,7 @@ export function ProjectCard({
         {project.role} · {project.company}
       </p>
       <p>{project.summary}</p>
-      <ul className="skill-list" aria-label="Competências aplicadas">
+      <ul className="skill-list" aria-label={t.appliedSkills}>
         {project.skills.map((skill) => (
           <li key={skill}>{skill}</li>
         ))}
@@ -30,7 +32,8 @@ export function ProjectCard({
         href={`/projetos/${project.slug}`}
         onNavigate={onNavigate}
       >
-        Ler o caso <ArrowRight size={16} aria-hidden="true" />
+        {t.readCase}
+        <ArrowRight size={16} aria-hidden="true" />
       </SiteLink>
     </article>
   );

@@ -1,20 +1,25 @@
-import { ContactLinks } from "./ContactLinks";
-export function ContactSection() {
+import { ArrowRight } from "lucide-react";
+import { SiteLink } from "../SiteLink";
+import { useLocale } from "../../i18n/LocaleContext";
+import type { PageProps } from "../../types/portfolio";
+export function ContactSection({ onNavigate }: PageProps) {
+  const { t } = useLocale();
   return (
     <section className="contact-section" aria-labelledby="contact-heading">
       <div className="editorial-container contact-grid">
         <div>
-          <p className="eyebrow">Contato</p>
-          <h2 id="contact-heading">
-            Vamos conversar sobre
-            <br />
-            uma oportunidade?
-          </h2>
-          <p>
-            Envie o contexto da vaga ou do projeto e a melhor forma de contato.
-          </p>
+          <p className="eyebrow">{t.contact}</p>
+          <h2 id="contact-heading">{t.contactCta}</h2>
+          <p>{t.contactCtaCopy}</p>
         </div>
-        <ContactLinks />
+        <SiteLink
+          href="/contato"
+          onNavigate={onNavigate}
+          className="primary-link"
+        >
+          {t.contactAction}
+          <ArrowRight size={17} aria-hidden="true" />
+        </SiteLink>
       </div>
     </section>
   );
