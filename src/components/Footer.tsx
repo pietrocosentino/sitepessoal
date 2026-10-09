@@ -8,20 +8,28 @@ export function Footer({ onNavigate }: PageProps) {
       <div className="editorial-container">
         <div className="footer-top">
           <div>
-            <SiteLink className="footer-brand" href="/" onNavigate>
-              {`${profile.name}.`}
+            <SiteLink
+              className="footer-brand"
+              href="/"
+              onNavigate={onNavigate}
+            >
+              {profile.name}.
             </SiteLink>
             <p>Requisitos, análise funcional e produto</p>
           </div>
 
           <nav aria-label="Contato e perfil">
-            <SiteLink href="/contato" onNavigate>
+            <SiteLink href="/contato" onNavigate={onNavigate}>
               Contato
             </SiteLink>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn ↗
             </a>
-            <SiteLink href="/insights" onNavigate>
+            <SiteLink href="/insights" onNavigate={onNavigate}>
               Insights
             </SiteLink>
           </nav>
