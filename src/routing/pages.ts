@@ -18,14 +18,6 @@ export const routePages = {
       import("../pages/CareerPage").then((m) => ({ default: m.CareerPage })),
     ),
   },
-  "/insights": {
-    key: "insights",
-    component: lazy(() =>
-      import("../pages/InsightsPage").then((m) => ({
-        default: m.InsightsPage,
-      })),
-    ),
-  },
   "/contato": {
     key: "contact",
     component: lazy(() =>

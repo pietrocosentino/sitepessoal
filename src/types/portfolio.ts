@@ -10,7 +10,6 @@ export interface Experience {
 }
 export interface ProjectArtifact {
   title: string;
-  kind: "flow" | "criteria";
   lines: readonly string[];
 }
 export interface Project {

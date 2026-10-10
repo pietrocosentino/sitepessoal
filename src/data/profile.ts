@@ -3,13 +3,14 @@ import type { Experience } from "../types/portfolio";
 export const profile = {
   name: "Pietro Cosentino",
   fullName: "Pietro Ferreira Cosentino",
-  headline: "Analista de Requisitos e Sistemas Funcional Sênior",
+  headline:
+    "Analista de Requisitos · Analista de Sistemas · Analista Funcional Sênior",
   summary:
     "9 anos entre negócios e tecnologia, com experiência em sistemas SaaS, levantamento de requisitos, análise funcional e gestão de backlog.",
   location: "São Paulo, Brasil",
   email: "pietrocosentino88@gmail.com",
   phone: "+55 (11) 98459-7523",
-  linkedin: "https://www.linkedin.com/in/pietro-cosentino10b79018a/",
+  linkedin: "https://www.linkedin.com/in/pietro-cosentino/",
   whatsapp:
     "https://wa.me/5511984597523?text=" +
     encodeURIComponent(
@@ -99,10 +100,40 @@ export const education = [
 ];
 export const credentials = [
   {
+    title: "Product Growth",
+    issuer: "PM3",
+    issued: "Ago. 2026",
+  },
+  {
+    title: "Product Marketing",
+    issuer: "PM3",
+    issued: "Ago. 2026",
+  },
+  {
+    title: "Product Discovery",
+    issuer: "PM3",
+    issued: "Nov. 2025",
+  },
+  {
+    title: "Product Design",
+    issuer: "PM3",
+    issued: "Fev. 2026",
+  },
+  {
+    title: "Product Manager",
+    issuer: "PM3",
+    issued: "Abr. 2025",
+  },
+  {
     title: "Scrum Foundation Professional Certificate (SFPC)",
     issuer: "CertiProf",
+    issued: "Jun. 2024",
   },
-  { title: "Formação em Product Management", issuer: "PM3" },
+  {
+    title: "Curso preparatório para Certificação CPRE-FL",
+    issuer: "Udemy",
+    issued: "Out. 2024",
+  },
 ];
 export const competencies = [
   {

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { SiteLink } from "./SiteLink";
 import { navigation } from "../data/navigation";
 import { useLocale } from "../i18n/LocaleContext";
-import { LanguageSelector } from "./LanguageSelector";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ResumeLink } from "./portfolio/ResumeLink";
 import type { Navigate } from "../types/portfolio";
 import type { Locale } from "../i18n/types";
@@ -69,8 +69,8 @@ export function Header({
           {links}
         </nav>
         <div className="header-actions">
-          <LanguageSelector onChange={onLocaleChange} />
-          <ResumeLink className="header-resume" />
+          <LanguageSwitcher onChange={onLocaleChange} />
+          <ResumeLink />
           <details ref={menuRef} className="mobile-menu">
             <summary>{t.menu}</summary>
             <nav aria-label={t.mobileNav}>{links}</nav>

@@ -8,11 +8,7 @@ export function ArtifactPreview({ artifact }: { artifact: ProjectArtifact }) {
         <h3>{artifact.title}</h3>
         <p>{t.artifactNote}</p>
       </figcaption>
-      <ol
-        className={
-          artifact.kind === "flow" ? "artifact-flow" : "artifact-criteria"
-        }
-      >
+      <ol>
         {artifact.lines.map((line, index) => (
           <li key={line}>
             <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>

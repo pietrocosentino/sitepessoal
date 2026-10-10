@@ -56,9 +56,9 @@ for locale, content in data['contentByLocale'].items():
         story.append(paragraph(item['title'] + ' | ' + item['institution'] + ' | ' + item['status']))
     section(t['credentials'])
     for item in content['credentials']:
-        story.append(paragraph(item['title'] + ' | ' + item['issuer']))
+        story.append(paragraph(item['title'] + ' | ' + item['issuer'] + ' | ' + item['issued']))
     section(t['languages'])
-    story.append(paragraph(t['englishLevel']))
+    story.append(paragraph(t['englishLevel'] + ' | ' + t['spanishLevel']))
     out = Path('public') / profile['resumePath'].lstrip('/')
     out.parent.mkdir(parents=True, exist_ok=True)
 

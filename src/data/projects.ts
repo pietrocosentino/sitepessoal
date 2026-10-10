@@ -5,9 +5,9 @@ export const projects: readonly Project[] = [
     slug: "integracao-academica-moodle",
     title: "Integração entre sistema acadêmico e Moodle",
     sector: "Educação",
-    company: "CRP Tecnologia",
-    period: "Ago. 2024 – mai. 2025",
-    role: "Analista de Requisitos",
+    company: "Hyti",
+    period: "Jun. 2025 – atual",
+    role: "Especialista de Requisitos",
     summary:
       "Regras de matrícula, usuários, cursos e ofertas documentadas para orientar a integração SEED–Moodle.",
     context:
@@ -28,7 +28,6 @@ export const projects: readonly Project[] = [
     skills: ["Requisitos", "Integrações", "BPMN", "Rastreabilidade"],
     artifact: {
       title: "Exemplo de fluxo de integração",
-      kind: "flow",
       lines: [
         "Consultar a situação acadêmica da matrícula.",
         "Validar os dados necessários e o vínculo com o curso.",
@@ -65,7 +64,6 @@ export const projects: readonly Project[] = [
     skills: ["Pix", "APIs REST", "UAT", "Análise de impacto"],
     artifact: {
       title: "Exemplo de critérios de aceite para reembolso",
-      kind: "criteria",
       lines: [
         "Dado um pagamento elegível, quando o reembolso for solicitado, então a solicitação deve ser vinculada à transação original.",
         "Dado um pedido já registrado, quando a mesma solicitação for repetida, então o sistema deve evitar um segundo processamento.",
@@ -100,7 +98,6 @@ export const projects: readonly Project[] = [
     skills: ["Análise funcional", "Power Platform", "Escopo", "Stakeholders"],
     artifact: {
       title: "Exemplo de análise de uma mudança de escopo",
-      kind: "flow",
       lines: [
         "Registrar a solicitação e a necessidade que a motivou.",
         "Identificar regras, telas, dados e integrações afetados.",

@@ -3,7 +3,8 @@ import type { PortfolioContent } from "./types";
 export const enContent: PortfolioContent = {
   profile: {
     ...ptContent.profile,
-    headline: "Senior Requirements and Functional Systems Analyst",
+    headline:
+      "Requirements Analyst · Systems Analyst · Senior Functional Analyst",
     summary:
       "9 years bridging business and technology, with experience in SaaS systems, requirements elicitation, functional analysis and backlog management.",
     location: "São Paulo, Brazil",
@@ -94,10 +95,40 @@ export const enContent: PortfolioContent = {
   ],
   credentials: [
     {
+      title: "Product Growth",
+      issuer: "PM3",
+      issued: "Aug 2026",
+    },
+    {
+      title: "Product Marketing",
+      issuer: "PM3",
+      issued: "Aug 2026",
+    },
+    {
+      title: "Product Discovery",
+      issuer: "PM3",
+      issued: "Nov 2025",
+    },
+    {
+      title: "Product Design",
+      issuer: "PM3",
+      issued: "Feb 2026",
+    },
+    {
+      title: "Product Manager",
+      issuer: "PM3",
+      issued: "Apr 2025",
+    },
+    {
       title: "Scrum Foundation Professional Certificate (SFPC)",
       issuer: "CertiProf",
+      issued: "Jun 2024",
     },
-    { title: "Product Management Training", issuer: "PM3" },
+    {
+      title: "CPRE-FL Certification Preparation Course",
+      issuer: "Udemy",
+      issued: "Oct 2024",
+    },
   ],
   competencies: [
     {
@@ -130,9 +161,9 @@ export const enContent: PortfolioContent = {
       slug: "integracao-academica-moodle",
       title: "Academic system integration with Moodle",
       sector: "Education",
-      company: "CRP Tecnologia",
-      period: "Aug 2024 – May 2025",
-      role: "Requirements Analyst",
+      company: "Hyti",
+      period: "Jun 2025 – present",
+      role: "Requirements Specialist",
       summary:
         "Enrolment, user, course and offering rules documented to guide SEED–Moodle integration.",
       context:
@@ -153,7 +184,6 @@ export const enContent: PortfolioContent = {
       skills: ["Requirements", "Integrations", "BPMN", "Traceability"],
       artifact: {
         title: "Illustrative integration flow",
-        kind: "flow",
         lines: [
           "Check the academic status of the enrolment.",
           "Validate required data and the course association.",
@@ -190,7 +220,6 @@ export const enContent: PortfolioContent = {
       skills: ["Pix", "REST APIs", "UAT", "Impact analysis"],
       artifact: {
         title: "Illustrative refund acceptance criteria",
-        kind: "criteria",
         lines: [
           "Given an eligible payment, when a refund is requested, then the request must be linked to the original transaction.",
           "Given an existing request, when the same request is repeated, then the system must prevent duplicate processing.",
@@ -230,7 +259,6 @@ export const enContent: PortfolioContent = {
       ],
       artifact: {
         title: "Illustrative scope-change analysis",
-        kind: "flow",
         lines: [
           "Record the request and the need behind it.",
           "Identify affected rules, screens, data and integrations.",
@@ -239,55 +267,6 @@ export const enContent: PortfolioContent = {
           "Document the decision and update requirements and criteria.",
         ],
       },
-    },
-  ],
-  categories: [
-    { id: "all", label: "All insights" },
-    { id: "requisitos", label: "Requirements" },
-    { id: "produto", label: "Product" },
-    { id: "estrategia", label: "Strategy" },
-    { id: "ia", label: "Artificial intelligence" },
-  ],
-  articles: [
-    {
-      id: "criterios-de-aceite",
-      category: "requisitos",
-      categoryLabel: "Requirements",
-      readTime: "2 min read",
-      title: "Acceptance criteria: the behaviour that needs validation",
-      lead: "Describing the main scenario is only the beginning. Alternatives and exceptions belong in the discussion too.",
-      content:
-        "A story can seem clear while leaving questions about mandatory data, permissions or integration failures. When defining acceptance criteria, I make the starting conditions, action and expected behaviour explicit.\n\nFor an enrolment, for example, analysis needs to consider student eligibility, the correct course, duplicates and the response from an integrated system. These scenarios help business, development and testing teams discuss the same delivery.\n\nAcceptance criteria describe the expected behaviour of a story. The Definition of Done establishes shared quality conditions for considering an increment complete. They are complementary concepts, not equivalent.",
-    },
-    {
-      id: "alinhamento-negocio-tecnologia",
-      category: "estrategia",
-      categoryLabel: "Business analysis",
-      readTime: "2 min read",
-      title: "Agree on the problem before discussing the solution",
-      lead: "A useful requirements meeting produces decisions and identified questions, not just a list of requests.",
-      content:
-        "When a department requests a feature, I start with the context: who uses the process, where the difficulty lies and what needs to change. I then identify rules, constraints and dependencies.\n\nAlignment with the technical team helps compare alternatives. A decision may change scope, require an integration or depend on data that is not yet available.\n\nRecording decisions, owners and open questions allows discussions to resume without relying on the memory of meeting participants.",
-    },
-    {
-      id: "ia-processos-negocio",
-      category: "ia",
-      categoryLabel: "AI for business",
-      readTime: "2 min read",
-      title: "Understand the process before applying AI",
-      lead: "Studies and reflections on data, cost and validation of artificial intelligence applications.",
-      content:
-        "In my MBA in Artificial Intelligence for Business, I study applications in data triage, repetitive tasks and scenario simulation. This content reflects ongoing education, not a claim that I have professionally deployed those use cases.\n\nWhen evaluating a proposal, I consider the problem, available data, information-access risks and the need for human review.\n\nIt is also necessary to define how to assess the outcome: response quality, execution time, costs and error frequency.",
-    },
-    {
-      id: "priorizacao-backlog",
-      category: "produto",
-      categoryLabel: "Product",
-      readTime: "2 min read",
-      title: "Prioritise the backlog with context and explicit criteria",
-      lead: "Comparing requests requires listening to stakeholders, identifying dependencies and considering user impact.",
-      content:
-        "An urgent request may matter, but it may compete with another need that has greater impact. When analysing requests, I consider the problem, affected users, dependencies and team constraints.\n\nWhen priorities conflict, the analyst or PO should make options and impacts explicit. The discussion becomes more useful when stakeholders can compare what is included, what waits and what requires a smaller scope.\n\nMetrics can support decisions when reliable data exists. Without measurement, it is better to record a hypothesis and rationale than to present an estimate as a proven outcome.",
     },
   ],
 };

@@ -17,9 +17,6 @@ export function Footer({ onNavigate }: PageProps) {
             <SiteLink href="/contato" onNavigate={onNavigate}>
               {t.contact}
             </SiteLink>
-            <SiteLink href="/insights" onNavigate={onNavigate}>
-              {t.insights}
-            </SiteLink>
           </nav>
         </div>
       </div>

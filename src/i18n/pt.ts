@@ -6,7 +6,6 @@ import {
   competencies,
 } from "../data/profile";
 import { projects } from "../data/projects";
-import { categories, articles } from "../data/insights";
 import type { PortfolioContent } from "./types";
 export const ptContent: PortfolioContent = {
   profile,
@@ -15,6 +14,4 @@ export const ptContent: PortfolioContent = {
   credentials,
   competencies,
   projects,
-  categories,
-  articles,
 };

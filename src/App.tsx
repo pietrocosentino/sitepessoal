@@ -41,7 +41,7 @@ function Portfolio({
     mainRef.current?.focus({ preventScroll: true });
   }, [currentPath]);
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
+    <div className="min-h-screen flex flex-col font-sans">
       <a href="#conteudo" className="skip-link">
         {t.skip}
       </a>

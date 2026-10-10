@@ -1,9 +1,8 @@
 import type { Locale } from "./types";
-export const supportedLocales: readonly Locale[] = ["pt", "en", "es"];
 export const localeOptions = [
-  { code: "pt", name: "Português", flag: "🇧🇷", htmlLang: "pt-BR" },
-  { code: "en", name: "English", flag: "🇺🇸", htmlLang: "en" },
-  { code: "es", name: "Español", flag: "🇪🇸", htmlLang: "es" },
+  { code: "pt", name: "Português", flag: "/flags/br.svg", htmlLang: "pt-BR" },
+  { code: "en", name: "English", flag: "/flags/us.svg", htmlLang: "en" },
+  { code: "es", name: "Español", flag: "/flags/es.svg", htmlLang: "es" },
 ] as const;
 export function isLocale(value: unknown): value is Locale {
   return value === "pt" || value === "en" || value === "es";

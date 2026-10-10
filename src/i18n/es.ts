@@ -3,7 +3,8 @@ import type { PortfolioContent } from "./types";
 export const esContent: PortfolioContent = {
   profile: {
     ...ptContent.profile,
-    headline: "Analista Sénior de Requisitos y Análisis Funcional de Sistemas",
+    headline:
+      "Analista de Requisitos · Analista de Sistemas · Analista Funcional Sénior",
     summary:
       "9 años entre negocio y tecnología, con experiencia en sistemas SaaS, levantamiento de requisitos, análisis funcional y gestión de backlog.",
     location: "São Paulo, Brasil",
@@ -94,10 +95,40 @@ export const esContent: PortfolioContent = {
   ],
   credentials: [
     {
+      title: "Product Growth",
+      issuer: "PM3",
+      issued: "Ago. 2026",
+    },
+    {
+      title: "Product Marketing",
+      issuer: "PM3",
+      issued: "Ago. 2026",
+    },
+    {
+      title: "Product Discovery",
+      issuer: "PM3",
+      issued: "Nov. 2025",
+    },
+    {
+      title: "Product Design",
+      issuer: "PM3",
+      issued: "Feb. 2026",
+    },
+    {
+      title: "Product Manager",
+      issuer: "PM3",
+      issued: "Abr. 2025",
+    },
+    {
       title: "Scrum Foundation Professional Certificate (SFPC)",
       issuer: "CertiProf",
+      issued: "Jun. 2024",
     },
-    { title: "Formación en Product Management", issuer: "PM3" },
+    {
+      title: "Curso preparatorio para la Certificación CPRE-FL",
+      issuer: "Udemy",
+      issued: "Oct. 2024",
+    },
   ],
   competencies: [
     {
@@ -130,9 +161,9 @@ export const esContent: PortfolioContent = {
       slug: "integracao-academica-moodle",
       title: "Integración entre sistema académico y Moodle",
       sector: "Educación",
-      company: "CRP Tecnologia",
-      period: "Ago. 2024 – may. 2025",
-      role: "Analista de Requisitos",
+      company: "Hyti",
+      period: "Jun. 2025 – actualidad",
+      role: "Especialista en Requisitos",
       summary:
         "Reglas de matrícula, usuarios, cursos y ofertas documentadas para orientar la integración SEED–Moodle.",
       context:
@@ -153,7 +184,6 @@ export const esContent: PortfolioContent = {
       skills: ["Requisitos", "Integraciones", "BPMN", "Trazabilidad"],
       artifact: {
         title: "Ejemplo de flujo de integración",
-        kind: "flow",
         lines: [
           "Consultar el estado académico de la matrícula.",
           "Validar los datos necesarios y la relación con el curso.",
@@ -190,7 +220,6 @@ export const esContent: PortfolioContent = {
       skills: ["Pix", "API REST", "UAT", "Análisis de impacto"],
       artifact: {
         title: "Ejemplo de criterios de aceptación para reembolso",
-        kind: "criteria",
         lines: [
           "Dado un pago elegible, cuando se solicite un reembolso, entonces la solicitud debe vincularse con la transacción original.",
           "Dada una solicitud ya registrada, cuando se repita la misma solicitud, entonces el sistema debe evitar un segundo procesamiento.",
@@ -230,7 +259,6 @@ export const esContent: PortfolioContent = {
       ],
       artifact: {
         title: "Ejemplo de análisis de un cambio de alcance",
-        kind: "flow",
         lines: [
           "Registrar la solicitud y la necesidad que la motivó.",
           "Identificar reglas, pantallas, datos e integraciones afectados.",
@@ -239,55 +267,6 @@ export const esContent: PortfolioContent = {
           "Documentar la decisión y actualizar requisitos y criterios.",
         ],
       },
-    },
-  ],
-  categories: [
-    { id: "all", label: "Todas las reflexiones" },
-    { id: "requisitos", label: "Requisitos" },
-    { id: "produto", label: "Producto" },
-    { id: "estrategia", label: "Estrategia" },
-    { id: "ia", label: "Inteligencia artificial" },
-  ],
-  articles: [
-    {
-      id: "criterios-de-aceite",
-      category: "requisitos",
-      categoryLabel: "Requisitos",
-      readTime: "2 min de lectura",
-      title: "Criterios de aceptación: el comportamiento que debe validarse",
-      lead: "Describir el escenario principal es solo el comienzo. Las alternativas y excepciones también deben discutirse.",
-      content:
-        "Una historia puede parecer clara y aun dejar dudas sobre datos obligatorios, permisos o fallos de integración. Al definir criterios de aceptación, explicito las condiciones iniciales, la acción y el comportamiento esperado.\n\nPara una matrícula, por ejemplo, el análisis debe considerar la elegibilidad del alumno, el curso correcto, la duplicidad y la respuesta de un sistema integrado. Estos escenarios ayudan a negocio, desarrollo y pruebas a discutir la misma entrega.\n\nLos criterios de aceptación describen el comportamiento esperado de una historia. La Definition of Done establece condiciones de calidad compartidas para considerar un incremento terminado. Son conceptos complementarios, no equivalentes.",
-    },
-    {
-      id: "alinhamento-negocio-tecnologia",
-      category: "estrategia",
-      categoryLabel: "Análisis de negocio",
-      readTime: "2 min de lectura",
-      title: "Alinear el problema antes de discutir la solución",
-      lead: "Una buena reunión de requisitos produce decisiones y preguntas identificadas, no solo una lista de solicitudes.",
-      content:
-        "Cuando un área solicita una funcionalidad, comienzo por el contexto: quién utiliza el proceso, dónde está la dificultad y qué debe cambiar. Después identifico reglas, restricciones y dependencias.\n\nLa alineación con el equipo técnico ayuda a comparar alternativas. Una decisión puede modificar el alcance, exigir una integración o depender de datos que aún no están disponibles.\n\nRegistrar decisiones, responsables y cuestiones pendientes permite retomar la discusión sin depender de la memoria de quienes participaron.",
-    },
-    {
-      id: "ia-processos-negocio",
-      category: "ia",
-      categoryLabel: "IA para negocios",
-      readTime: "2 min de lectura",
-      title: "Antes de aplicar IA, entender el proceso",
-      lead: "Estudios y reflexiones sobre datos, costos y validación de aplicaciones de inteligencia artificial.",
-      content:
-        "En el MBA en Inteligencia Artificial para Negocios, estudio aplicaciones en clasificación de datos, tareas repetitivas y simulación de escenarios. Este contenido representa una formación en curso, no una afirmación de implementación profesional de esos casos.\n\nPara evaluar una propuesta, considero el problema, los datos disponibles, los riesgos de acceso a la información y la necesidad de revisión humana.\n\nTambién es necesario definir cómo verificar el resultado: calidad de las respuestas, tiempo de ejecución, costos y frecuencia de errores.",
-    },
-    {
-      id: "priorizacao-backlog",
-      category: "produto",
-      categoryLabel: "Producto",
-      readTime: "2 min de lectura",
-      title: "Priorizar el backlog con contexto y criterios explícitos",
-      lead: "Comparar solicitudes exige escuchar a las áreas, identificar dependencias y considerar el impacto para los usuarios.",
-      content:
-        "Una solicitud urgente puede ser relevante, pero también puede competir con otra necesidad de mayor impacto. Al analizar solicitudes, considero el problema, los usuarios afectados, las dependencias y las restricciones del equipo.\n\nCuando las prioridades entran en conflicto, el analista o PO debe explicitar las opciones y sus impactos. La discusión es más útil cuando las áreas pueden comparar qué se incluye, qué espera y qué requiere reducir el alcance.\n\nLos indicadores pueden apoyar la decisión cuando existen datos confiables. Sin medición, es mejor registrar una hipótesis y su justificación que presentar una estimación como resultado comprobado.",
     },
   ],
 };

@@ -35,7 +35,7 @@ export function readLocation(location: Pick<Location, "pathname" | "hash">) {
   const path = parseLocalizedPath(location.pathname).path;
   if (
     path === "/" &&
-    /^#\/?(?:sobre|experiencia|cases|solucoes|metodologia|como-funciona|metodo|projetos|trajetoria|insights|contato)\/?$/.test(
+    /^#\/?(?:sobre|experiencia|cases|solucoes|metodologia|como-funciona|metodo|projetos|trajetoria|contato)\/?$/.test(
       location.hash,
     )
   ) {

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { useLocale } from "../../i18n/LocaleContext";
 export function ContactLinks() {
   const {
@@ -17,10 +17,15 @@ export function ContactLinks() {
         {profile.name}
         <ArrowUpRight size={17} aria-hidden="true" />
       </a>
-      <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
-        <span>{t.whatsapp}</span>
-        {profile.phone}
-        <ArrowUpRight size={17} aria-hidden="true" />
+      <a
+        className="whatsapp-contact"
+        href={profile.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.whatsapp}
+        title={t.whatsapp}
+      >
+        <MessageCircle size={28} aria-hidden="true" />
       </a>
     </address>
   );

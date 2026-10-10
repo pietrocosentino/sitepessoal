@@ -61,14 +61,19 @@ export function CareerPage({ onNavigate }: PageProps) {
             {credentials.map((item) => (
               <li key={item.title}>
                 <h3>{item.title}</h3>
-                <p>{item.issuer}</p>
+                <p>
+                  {item.issuer} · {item.issued}
+                </p>
               </li>
             ))}
           </ul>
         </section>
         <section className="career-section" aria-labelledby="languages-heading">
           <SectionHeading id="languages-heading" title={t.languages} />
-          <p className="section-copy">{t.englishLevel}</p>
+          <ul className="language-levels">
+            <li>{t.englishLevel}</li>
+            <li>{t.spanishLevel}</li>
+          </ul>
         </section>
       </div>
       <ContactSection onNavigate={onNavigate} />

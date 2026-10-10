@@ -31,6 +31,8 @@ test("legacy routes, trailing slashes and hash routes resolve without mistaking 
   assert.equal(projectSlug("/projetos/exemplo"), "exemplo");
   assert.equal(projectSlug("/projetos/exemplo/invalido"), undefined);
   assert.equal(resolvePath("/ausente"), "/ausente");
+  const { routePages } = await server.ssrLoadModule("/src/routing/pages.ts");
+  assert(!Object.hasOwn(routePages, "/insights"));
 });
 
 test("project cases and resume references are valid; examples are visibly distinguished from client evidence", async () => {
@@ -64,7 +66,6 @@ test("primary pages render one h1 and a readable professional profile", async ()
     ["ProjectsPage", "ProjectsPage"],
     ["CareerPage", "CareerPage"],
     ["ContactPage", "ContactPage"],
-    ["InsightsPage", "InsightsPage"],
   ]) {
     const module = await server.ssrLoadModule(`/src/pages/${file}.tsx`);
     const html = renderToStaticMarkup(
@@ -198,36 +199,6 @@ test("SiteLink preserves modifier clicks, external targets and downloads", async
   }
 });
 
-test("Insights category filtering and article disclosure update accessible state", async () => {
-  const dom = installDOM();
-  const { InsightsPage } = await server.ssrLoadModule(
-    "/src/pages/InsightsPage.tsx",
-  );
-  const root = createRoot(document.getElementById("root"));
-  try {
-    await act(async () => {
-      root.render(createElement(InsightsPage, { onNavigate() {} }));
-    });
-    const category = [...document.querySelectorAll("button")].find(
-      (b) => b.textContent === "Requisitos",
-    );
-    await act(async () => category.click());
-    assert.equal(category.getAttribute("aria-pressed"), "true");
-    const articleButtons = document.querySelectorAll("button[aria-expanded]");
-    assert.equal(articleButtons.length, 1);
-    await act(async () => articleButtons[0].click());
-    assert.equal(articleButtons[0].getAttribute("aria-expanded"), "true");
-    assert(
-      document.body.textContent.includes(
-        "São conceitos complementares, não equivalentes",
-      ),
-    );
-  } finally {
-    await act(async () => root.unmount());
-    dom.window.close();
-  }
-});
-
 test("localized URLs and content preserve professional identities and include three PDF resumes", async () => {
   const { parseLocalizedPath, localizedPath } = await server.ssrLoadModule(
     "/src/routing/routes.ts",
@@ -241,6 +212,23 @@ test("localized URLs and content preserve professional identities and include th
   );
   for (const locale of ["pt", "en", "es"]) {
     const content = contentByLocale[locale];
+    assert.equal(content.projects[0].company, "Hyti");
+    assert.equal(content.projects[0].period, content.experiences[0].period);
+    assert(!content.profile.headline.includes("Systems Functional"));
+    assert(labels[locale].spanishLevel);
+    assert.deepEqual(
+      content.credentials
+        .filter((item) => item.issuer === "PM3")
+        .map((item) => item.title),
+      [
+        "Product Growth",
+        "Product Marketing",
+        "Product Discovery",
+        "Product Design",
+        "Product Manager",
+      ],
+    );
+    assert(content.credentials.every((item) => item.issued));
     assert.deepEqual(
       Object.keys(labels[locale]).sort(),
       Object.keys(labels.pt).sort(),
@@ -253,7 +241,6 @@ test("localized URLs and content preserve professional identities and include th
       content.experiences.map((p) => p.company),
       contentByLocale.pt.experiences.map((p) => p.company),
     );
-    assert.equal(content.articles.length, contentByLocale.pt.articles.length);
     assert.equal(
       readFileSync("public" + content.profile.resumePath)
         .subarray(0, 5)
@@ -271,7 +258,6 @@ test("localized URLs and content preserve professional identities and include th
       "CareerPage",
       "ProjectsPage",
       "ContactPage",
-      "InsightsPage",
     ]) {
       const module = await server.ssrLoadModule(`/src/pages/${page}.tsx`);
       const html = renderToStaticMarkup(
@@ -321,11 +307,19 @@ test("language switching preserves the case and history, updates metadata and se
         .querySelector("h1")
         .textContent.includes(contentByLocale.en.projects[0].title),
     );
-    const select = document.querySelector("select");
-    await act(async () => {
-      select.value = "es";
-      select.dispatchEvent(new window.Event("change", { bubbles: true }));
-    });
+    const activeLocale = () =>
+      document.querySelector('button[data-locale][aria-pressed="true"]').dataset
+        .locale;
+    const switchTo = async (locale) =>
+      act(async () =>
+        document.querySelector(`button[data-locale="${locale}"]`).click(),
+      );
+    assert.equal(
+      document.querySelectorAll(".language-switcher button").length,
+      3,
+    );
+    assert.equal(document.querySelector("select"), null);
+    await switchTo("es");
     assert.equal(window.location.pathname, `/es/projetos/${slug}`);
     assert.equal(document.documentElement.lang, "es");
     assert(document.title.includes(contentByLocale.es.projects[0].title));
@@ -342,19 +336,13 @@ test("language switching preserves the case and history, updates metadata and se
     assert.equal(window.localStorage.getItem("portfolio-language"), "es");
     await act(async () => window.history.back());
     await settle();
-    assert.equal(select.value, "en");
-    await act(async () => {
-      select.value = "pt";
-      select.dispatchEvent(new window.Event("change", { bubbles: true }));
-    });
+    assert.equal(activeLocale(), "en");
+    await switchTo("pt");
     assert.equal(window.location.pathname, `/projetos/${slug}`);
-    await act(async () => {
-      select.value = "en";
-      select.dispatchEvent(new window.Event("change", { bubbles: true }));
-    });
+    await switchTo("en");
     await act(async () => window.history.back());
     await settle();
-    assert.equal(select.value, "pt");
+    assert.equal(activeLocale(), "pt");
     assert.equal(document.documentElement.lang, "pt-BR");
   } finally {
     await act(async () => root.unmount());
@@ -362,7 +350,7 @@ test("language switching preserves the case and history, updates metadata and se
   }
 });
 
-test("resume appears once, full contact channels stay on Contact, and Insights is a footer link", async () => {
+test("resume appears once, full contact channels stay on Contact, and removed features are absent", async () => {
   const { default: App } = await server.ssrLoadModule("/src/App.tsx");
   for (const path of ["/", "/trajetoria", "/contato"]) {
     const dom = installDOM("http://localhost" + path);
@@ -372,13 +360,20 @@ test("resume appears once, full contact channels stay on Contact, and Insights i
       await settle();
       assert.equal(document.querySelectorAll("a[download]").length, 1, path);
       assert(document.querySelector("header a[download]"));
+      if (path === "/contato") {
+        const whatsapp = document.querySelector('a[href*="wa.me"]');
+        assert.equal(whatsapp.getAttribute("aria-label"), "WhatsApp");
+        assert.equal(whatsapp.textContent.trim(), "");
+        assert(whatsapp.querySelector("svg"));
+        assert(!document.body.textContent.includes("98459"));
+      }
       assert.equal(
         document.querySelectorAll('header a[href="/insights"]').length,
         0,
       );
       assert.equal(
         document.querySelectorAll('footer a[href="/insights"]').length,
-        1,
+        0,
       );
       for (const selector of [
         'a[href^="mailto:"]',
@@ -423,7 +418,11 @@ test("saved and browser languages are honored, explicit URLs override preference
     try {
       await act(async () => root.render(createElement(App)));
       await settle();
-      assert.equal(document.querySelector("select").value, scenario.expected);
+      assert.equal(
+        document.querySelector('button[data-locale][aria-pressed="true"]')
+          .dataset.locale,
+        scenario.expected,
+      );
     } finally {
       await act(async () => root.unmount());
       dom.window.close();
