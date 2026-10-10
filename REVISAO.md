@@ -15,7 +15,7 @@
 - Cinco cursos PM3 conferidos no LinkedIn autenticado, com datas de emissão, traduzidos e incluídos nos PDFs; pendência removida do README. Curso preparatório CPRE-FL identificado como formação complementar.
 - Troca de idioma mantém a página e o histórico; preferência lembrada quando disponível e URLs compartilháveis por idioma.
 - Seção de artigos removida por completo, incluindo rota, dados, traduções, componente e estilos.
-- WhatsApp acessível por ícone sem telefone visível; e-mail e LinkedIn mantidos.
+- E-mail, LinkedIn e WhatsApp apresentados somente como ícones acessíveis; sem endereço de e-mail ou telefone em texto na tela.
 - Endereços antigos normalizados para a nova estrutura.
 
 ## Organização e manutenção

@@ -1,4 +1,4 @@
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { Mail, Linkedin, MessageCircle } from "lucide-react";
 import { useLocale } from "../../i18n/LocaleContext";
 export function ContactLinks() {
   const {
@@ -7,18 +7,19 @@ export function ContactLinks() {
   } = useLocale();
   return (
     <address className="contact-channel-list">
-      <a href={`mailto:${profile.email}`}>
-        <span>{t.email}</span>
-        {profile.email}
-        <ArrowUpRight size={17} aria-hidden="true" />
-      </a>
-      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-        <span>{t.linkedin}</span>
-        {profile.name}
-        <ArrowUpRight size={17} aria-hidden="true" />
+      <a href={`mailto:${profile.email}`} aria-label={t.email} title={t.email}>
+        <Mail size={28} aria-hidden="true" />
       </a>
       <a
-        className="whatsapp-contact"
+        href={profile.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.linkedin}
+        title={t.linkedin}
+      >
+        <Linkedin size={28} aria-hidden="true" />
+      </a>
+      <a
         href={profile.whatsapp}
         target="_blank"
         rel="noopener noreferrer"

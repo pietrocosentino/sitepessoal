@@ -366,6 +366,23 @@ test("resume appears once, full contact channels stay on Contact, and removed fe
         assert.equal(whatsapp.textContent.trim(), "");
         assert(whatsapp.querySelector("svg"));
         assert(!document.body.textContent.includes("98459"));
+        assert(
+          !document.body.textContent.includes("pietrocosentino88@gmail.com"),
+        );
+        const contacts = [
+          ...document.querySelectorAll(".contact-channel-list a"),
+        ];
+        assert.equal(contacts.length, 3);
+        assert.deepEqual(
+          contacts.map((link) => link.getAttribute("aria-label")),
+          ["E-mail", "LinkedIn", "WhatsApp"],
+        );
+        assert(
+          contacts.every(
+            (link) =>
+              link.textContent.trim() === "" && link.querySelector("svg"),
+          ),
+        );
       }
       assert.equal(
         document.querySelectorAll('header a[href="/insights"]').length,

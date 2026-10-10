@@ -777,29 +777,26 @@
   }
 }
 .contact-channel-list {
-  display: grid;
-  gap: 1.5rem;
-  font-style: normal;
-}
-.contact-channel-list a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1rem;
+  font-style: normal;
+}
+.contact-channel-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 50%;
   color: var(--portfolio-accent);
-  border-top: 1px solid var(--portfolio-border);
-  padding: 1.25rem 0;
-  font-size: 0.95rem;
   text-decoration: none;
 }
-.contact-channel-list a span {
-  width: 100%;
-  color: var(--portfolio-muted);
-  font-size: 0.75rem;
-}
 .contact-channel-list a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  background: var(--portfolio-soft);
+  border-color: var(--portfolio-accent);
 }
 .professional-footer nav {
   display: flex;
@@ -830,18 +827,6 @@
   }
 }
 
-.contact-channel-list a.whatsapp-contact {
-  display: inline-flex;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  padding: 0;
-  border: 1px solid var(--portfolio-border);
-  border-radius: 50%;
-}
-.contact-channel-list a.whatsapp-contact:hover {
-  background: var(--portfolio-soft);
-}
 @media (max-width: 1000px) {
   .desktop-nav {
     display: none;
